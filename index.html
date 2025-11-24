@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+
+    <style>
+        /* CSS customizado para a cor e rolagem */
+        .scrollable-stepper {
+            display: flex; /* Para alinhar os itens horizontalmente */
+            overflow-x: auto; /* Habilita a rolagem horizontal */
+            padding: 1rem 0;
+            /* Esconde a barra de rolagem no Chrome/Safari */
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+        .scrollable-stepper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .step-pill {
+            /* Força os elementos a não quebrarem a linha */
+            flex-shrink: 0; 
+            margin-right: 10px; /* Espaçamento entre os passos */
+            border-radius: 50px;
+            padding: 10px 20px;
+            text-align: center;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, border 0.3s;
+            border: 2px solid #90cd3e; /* Cor da borda base */
+        }
+        
+        /* Cor base: #90cd3e */
+        .step-pill.completed {
+            background-color: #90cd3e;
+            color: #fff;
+            border-color: #90cd3e;
+        }
+        
+        .step-pill.incomplete {
+            background-color: #fff;
+            color: #555;
+            border-color: #90cd3e;
+        }
+
+        .step-pill.current {
+            background-color: #90cd3e;
+            color: #fff;
+            border-color: #90cd3e;
+            /* Adiciona um pouco mais de destaque ao passo atual */
+            box-shadow: 0 0 0 3px rgba(144, 205, 62, 0.5); 
+        }
+    </style>
+</head>
+<body>
+  </head>
+
+  <body>
+    <nav
+      class="navbar navbar-expand-lg bg-body-tertiary rounded"
+      aria-label="Thirteenth navbar example"
+    >
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarsExample11"
+          aria-controls="navbarsExample11"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
+          <a class="navbar-brand col-lg-3 me-0" href="#">
+            <img src="./logo.png" alt="Logo da forma" style="height: 30px;" />
+          </a>
+
+          <ul class="navbar-nav col-lg-6 justify-content-lg-center">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Contate-nos</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Nossos produtos
+              </a>
+
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <div class="d-lg-flex col-lg-3 justify-content-lg-end">
+            <button
+              class="btn btn-primary"
+              style="background-color: #90cd3e; border-color: #90cd3e;"
+            >
+              faça seu currículo
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container col-xxl-8 px-4 py-5">
+      <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+          <img
+            src="./curriculo-meninas.png"
+            class="d-block mx-lg-auto img-fluid"
+            alt="Bootstrap Themes"
+            width="700"
+            height="500"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="col-lg-6">
+          <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">
+            Responsive left-aligned hero with image
+          </h1>
+
+          <p class="lead">
+            Quickly design and customize responsive mobile-first sites with
+            Bootstrap, the world’s most popular front-end open source toolkit,
+            featuring Sass variables and mixins, responsive grid system, extensive
+            prebuilt components, and powerful JavaScript plugins.
+          </p>
+
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <button
+              type="button"
+              class="btn btn-primary btn-lg px-4 me-md-2"
+              style="background-color: #90cd3e; border-color: #90cd3e;"
+            >
+              Faça agora seu currículo virtual
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="curriculum">
+        <div class="container my-5">
+            <h2 class="mb-4">Vamos lá!</h2>
+            
+            <div class="scrollable-stepper" id="curriculumStepper">
+                
+                <div class="step-pill completed" data-step="1">
+                    <span class="d-none d-md-inline">1.</span> Dados Principais
+                </div>
+                
+                <div class="step-pill completed" data-step="2">
+                    <span class="d-none d-md-inline">2.</span> Contatos
+                </div>
+                
+                <div class="step-pill current" data-step="3">
+                    <span class="d-none d-md-inline">3.</span> Resumo Profissional
+                </div>
+                
+                <div class="step-pill incomplete" data-step="4">
+                    <span class="d-none d-md-inline">4.</span> Experiência Profissional
+                </div>
+                
+                <div class="step-pill incomplete" data-step="5">
+                    <span class="d-none d-md-inline">5.</span> Formação Acadêmica
+                </div>
+                
+                <div class="step-pill incomplete" data-step="6">
+                    <span class="d-none d-md-inline">6.</span> Skills
+                </div>
+                
+                <div class="step-pill incomplete" data-step="7">
+                    <span class="d-none d-md-inline">7.</span> Idiomas
+                </div>
+                
+                <div class="step-pill incomplete" data-step="8">
+                    <span class="d-none d-md-inline">8.</span> Revisão Final
+                </div>
+            </div>
+            
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title">Conteúdo da Etapa Atual (Resumo Profissional)</h5>
+                    <p>Aqui você colocaria o formulário ou conteúdo correspondente ao passo 3.</p>
+                </div>
+            </div>
+            
+            <div class="d-flex justify-content-between mt-3">
+                <button class="btn btn-secondary" onclick="goToPreviousStep()">Voltar</button>
+                <button class="btn btn-primary" style="background-color: #90cd3e; border-color: #90cd3e;" onclick="goToNextStep()">Próximo Passo</button>
+            </div>
+        </div>
+    </section>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+        // Se você quiser que o passo atual seja centralizado/visível ao carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentStep = document.querySelector('.step-pill.current');
+            const stepperContainer = document.getElementById('curriculumStepper');
+            
+            if (currentStep && stepperContainer) {
+                // Calcula a posição de rolagem para centralizar o passo atual
+                const scrollPosition = currentStep.offsetLeft - (stepperContainer.offsetWidth / 2) + (currentStep.offsetWidth / 2);
+                stepperContainer.scrollLeft = scrollPosition;
+            }
+        });
+    
+        // Função de exemplo para simular o avanço de passos
+        function goToNextStep() {
+            alert('Simulando avanço para o próximo passo. A lógica real deve ser implementada no seu site.');
+            // Aqui você adicionaria a lógica para atualizar o estado da classe (current, completed)
+        }
+    
+        function goToPreviousStep() {
+            alert('Simulando volta para o passo anterior.');
+            // Aqui você adicionaria a lógica para atualizar o estado da classe (current, completed)
+        }
+    </script>
+  </body>
+</html>

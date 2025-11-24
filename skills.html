@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <style>
+        /* CSS customizado para a cor e rolagem */
+        .scrollable-stepper {
+            display: flex; /* Para alinhar os itens horizontalmente */
+            overflow-x: auto; /* Habilita a rolagem horizontal */
+            padding: 1rem 0;
+            /* Esconde a barra de rolagem no Chrome/Safari */
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+        .scrollable-stepper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .step-pill {
+            /* Força os elementos a não quebrarem a linha */
+            flex-shrink: 0; 
+            margin-right: 10px; /* Espaçamento entre os passos */
+            border-radius: 50px;
+            padding: 10px 20px;
+            text-align: center;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, border 0.3s;
+            border: 2px solid #90cd3e; /* Cor da borda base */
+        }
+        
+        /* Cor base: #90cd3e */
+        .step-pill.completed {
+            background-color: #90cd3e;
+            color: #fff;
+            border-color: #90cd3e;
+        }
+        
+        .step-pill.incomplete {
+            background-color: #fff;
+            color: #555;
+            border-color: #90cd3e;
+        }
+
+        .step-pill.current {
+            background-color: #90cd3e;
+            color: #fff;
+            border-color: #90cd3e;
+            /* Adiciona um pouco mais de destaque ao passo atual */
+            box-shadow: 0 0 0 3px rgba(144, 205, 62, 0.5); 
+        }
+    </style>
+</head>
+<body>
+    <section id="curriculum">
+        <div class="container my-5">
+            <h2 class="mb-4">Vamos lá!</h2>
+            
+            <div class="scrollable-stepper" id="curriculumStepper">
+                
+                <div class="step-pill completed" data-step="1">
+                    <span class="d-none d-md-inline">1.</span> Dados Principais
+                </div>
+                
+                <div class="step-pill current" data-step="2">
+                    <span class="d-none d-md-inline">3.</span> Resumo Profissional
+                </div>
+                
+                <div class="step-pill incomplete" data-step="3">
+                    <span class="d-none d-md-inline">4.</span> Experiência Profissional
+                </div>
+                
+                <div class="step-pill incomplete" data-step="4">
+                    <span class="d-none d-md-inline">5.</span> Formação Acadêmica
+                </div>
+                
+                <div class="step-pill incomplete" data-step="5">
+                    <span class="d-none d-md-inline">6.</span> Skills
+                </div>
+                
+                <div class="step-pill incomplete" data-step="6">
+                    <span class="d-none d-md-inline">7.</span> Idiomas
+                </div>
+                
+                <div class="step-pill incomplete" data-step="7">
+                    <span class="d-none d-md-inline">8.</span> Revisão Final
+                </div>
+            </div>
+            
+            <div class="card mt-4">
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="hardSkills" class="form-label">Habilidades Técnicas (Hard Skills)</label>
+                            <input type="text" class="form-control" id="hardSkills" 
+                                   placeholder="Ex: Python, Google Analytics, SAP, Adobe Photoshop.">
+                            <div class="form-text">
+                                Liste os softwares e ferramentas específicas que você domina.
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="softSkills" class="form-label">Habilidades Comportamentais (Soft Skills)</label>
+                            <input type="text" class="form-control" id="softSkills" 
+                                   placeholder="Ex: Liderança, Comunicação eficaz, Resolução de problemas.">
+                            <div class="form-text">
+                                Liste suas competências interpessoais e de gestão.
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="proficienciaGeral" class="form-label">Proficiência em Ferramenta Específica (Exemplo)</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="ferramenta1" placeholder="Ex: Excel">
+                                <select class="form-select" id="nivelFerramenta1">
+                                    <option selected>Nível de Proficiência</option>
+                                    <option value="basico">Básico</option>
+                                    <option value="intermediario">Intermediário</option>
+                                    <option value="avancado">Avançado</option>
+                                    <option value="fluente">Fluente/Especialista</option>
+                                </select>
+                            </div>
+                        </div>
+                      </form>
+                </div>
+            </div>
+            
+            <div class="d-flex justify-content-between mt-3">
+                <button class="btn btn-secondary" onclick="goToPreviousStep()">Voltar</button>
+                <button class="btn btn-primary" style="background-color: #90cd3e; border-color: #90cd3e;" onclick="goToNextStep()">Próximo Passo</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
